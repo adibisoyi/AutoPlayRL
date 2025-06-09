@@ -53,40 +53,25 @@ cd RLAGENT/MarioRLAgent
 ````
 2. **Environment**:
    - **Conda**:
-     ```bash
+```bash
 conda env create -f environment.yml
 conda activate rlagent
 ````
 
-* **Virtualenv + pip**:
+ - **Virtualenv + pip**:
 
-  ```bash
-  ```
-
+```bash
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-
 ````
 
 ## Usage
 - **Training**:
-  ```bash
-python scripts/masterloop.py --mode train --config config.yaml
+```bash
+MAX_COMBO_KEYS=2 python scripts/masterloop.py --episodes 500
 ````
 
-* **Evaluation**:
-
-  ```bash
-  ```
-
-python scripts/agent.py --mode eval --checkpoint models/best.pt
-
-````
-- **HUD Testing**:
-  ```bash
-python scripts/hud_test_pipeline.py
-````
 
 ## Contributing
 

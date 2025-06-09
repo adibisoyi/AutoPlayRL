@@ -1,0 +1,9 @@
+name: game_agent_env
+channels:
+  - https://repo.anaconda.com/pkgs/main
+  - https://repo.anaconda.com/pkgs/r
+dependencies:
+  - pip
+  - python=3.9
+  - tk
+prefix: /Users/adi/miniconda3/envs/game_agent_env

@@ -6,6 +6,7 @@ import json
 import time
 import os
 from hud_monitor import HUDMonitor
+import logging
 
 def bring_nestopia_to_front():
     try:
@@ -13,27 +14,28 @@ def bring_nestopia_to_front():
         subprocess.run(["osascript", "-e", script])
         time.sleep(0.5)
     except Exception as e:
-        print(f"[ERROR] Could not bring Nestopia to front: {e}")
+        logging.error("Could not bring Nestopia to front: %s", e)
 
+logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(message)s")
 bring_nestopia_to_front()
 #input("[ACTION REQUIRED] Please make sure the game window is visible and press Enter to continue...")
 
 # Step 1: No manual selection needed; HUD will be detected automatically
 
 # Step 3: Read and extract HUD info using selected region
-print("[INFO] Extracting HUD info using automatic strip detection...")
+logging.info("Extracting HUD info using automatic strip detection...")
 hud_monitor = HUDMonitor()
 hud_info = hud_monitor.extract_hud_info(debug=True)
 
 analyser = HUDAnalyser()
 if hud_info:
-    print("\n✅ HUD Info Extracted:")
+    logging.info("\n HUD Info Extracted:")
     for k, v in hud_info.items():
-        print(f"  {k}: {v}")
+        logging.info("  %s: %s", k, v)
     if 'hud_text' in hud_info:
         analyser.update(hud_info['hud_text'])
-        print("\n📊 HUD Slot Analysis:")
+        logging.info("\n HUD Slot Analysis:")
         for idx, slot in enumerate(analyser.debug_slot_info()):
-            print(f"  Slot {idx}: Value = {slot['value']}, Score = {slot['score']:.2f}, Status = {slot['status']}")
+            logging.info("  Slot %d: Value = %s, Score = %.2f, Status = %s", idx, slot['value'], slot['score'], slot['status'])
 else:
-    print("❌ HUD info could not be extracted.")
+    logging.error("HUD info could not be extracted.")

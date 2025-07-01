@@ -2,7 +2,7 @@
 
 ## Overview
 
-A modular, end-to-end proof-of-concept for autonomous game playing agents. Extendable to any title—currently demoed on Super Mario Bros.
+A modular, end-to-end proof-of-concept for autonomous game playing agents. Extendable to any title, currently demoed on Super Mario Bros.
 
 ## Core Components
 
@@ -100,6 +100,8 @@ The screen-capture utilities rely on the Quartz framework via `pyobjc`. At the m
 ```bash
 MAX_COMBO_KEYS=2 python scripts/masterloop.py --episodes 500
 ```
+> **Tip:** To allow more simultaneous key-press combinations, bump up `MAX_COMBO_KEYS` (e.g. `MAX_COMBO_KEYS=3 python scripts/masterloop.py …`).
+
 ## Research Proof-of-Concept
   - Modularity: Swap in PPO, SAC or custom policies by adhering to policy.py interface.
   -	Performance: Shared-memory IPC reduces inter-process latency by over 60%.

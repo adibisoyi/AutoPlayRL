@@ -2,6 +2,7 @@ import os
 import torch
 import numpy as np
 import cv2
+import logging
 from yolov5.utils.augmentations import letterbox
 from yolov5.utils.general import non_max_suppression
 from yolov5.models.common import DetectMultiBackend
@@ -127,5 +128,5 @@ def get_player_movement(capture_fn) -> tuple:
 
     dx = state2["player_x"] - state1["player_x"]
     dy = state2["player_y"] - state1["player_y"]
-    print(f"[DEBUG] Movement dx={dx}, dy={dy}")
+    logging.debug("Movement dx=%s, dy=%s", dx, dy)
     return dx, dy

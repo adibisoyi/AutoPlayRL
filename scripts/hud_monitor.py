@@ -8,6 +8,7 @@ import pytesseract
 import re
 import json
 import os
+import logging
 
 class HUDMonitor:
     def __init__(self, game_window_name="Nestopia"):
@@ -95,9 +96,9 @@ class HUDMonitor:
         bottom_score = numeric_score(bottom_text)
 
         if debug:
-            print("[TOP HUD OCR]:", repr(top_text))
-            print("[BOTTOM HUD OCR]:", repr(bottom_text))
-            print(f"[NUMERIC SCORES] Top: {top_score}, Bottom: {bottom_score}")
+            logging.debug("[TOP HUD OCR]: %s", repr(top_text))
+            logging.debug("[BOTTOM HUD OCR]: %s", repr(bottom_text))
+            logging.debug("[NUMERIC SCORES] Top: %s, Bottom: %s", top_score, bottom_score)
 
         top_digits = re.findall(r'\d+', top_text)
         bottom_digits = re.findall(r'\d+', bottom_text)

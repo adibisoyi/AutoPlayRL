@@ -3,6 +3,7 @@
 import os
 import cv2
 import numpy as np
+import logging
 
 # load your templates once
 TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), "templates")
@@ -12,7 +13,7 @@ for name in TEMPLATE_NAMES:
     path = os.path.join(TEMPLATE_DIR, name)
     tpl = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
     if tpl is None:
-        print(f"[WARN] Failed to load template: {path}")
+        logging.warning("Failed to load template: %s", path)
     TEMPLATES.append(tpl)
 
 def is_special_screen(img_rgb, match_threshold=0.8):

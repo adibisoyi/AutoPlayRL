@@ -66,7 +66,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 3. **Download YOLOv5 and pretrained weights**:
-Grab the YOLOv5 repository and the `best.pt` weights from [Google Drive]((https://drive.google.com/drive/folders/1DHswa77ZItY7tJHxB_ejbhvlIkoMAFrm?usp=drive_link)).
+Grab the YOLOv5 repository and the `best.pt` weights from [Google Drive](https://drive.google.com/drive/folders/1DHswa77ZItY7tJHxB_ejbhvlIkoMAFrm?usp=drive_link).
 
 After downloading:
 1. Copy the `yolov5` folder into `scripts/yolov5/`.

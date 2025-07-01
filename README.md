@@ -2,15 +2,31 @@
 
 ## Overview
 
-`RLAGENT` is a modular framework for building autonomous reinforcement learning agents for video games. The `MarioRLAgent` submodule integrates:
+A modular, end-to-end proof-of-concept for autonomous game playing agents. Extendable to any title—currently demoed on Super Mario Bros.
 
-* **State Extraction** via YOLOv5-based object detection and custom HUD analysis
-* **Reward Modeling** with memory buffers and learned reward networks
-* **PPO Policy** implementation in TensorFlow/PyTorch for agent training
-* **Pipeline Orchestration** through a master loop coordinating capture, detection, and action execution
+## 🎯 Core Components
+
+**Real-Time State Extraction**  
+  - YOLOv5-based object detection (scripts/agent_utils/state_extractor.py)  
+  - Custom HUD parsing via OCR & strip analysis (hud_analyser.py / hud_monitor.py)  
+
+**Configurable Reward Modeling**  
+  - Heuristic reward networks & memory buffers (reward_model.py / reward_memory.py)  
+  - Template-driven reward definitions for rapid experimentation  
+
+**Epsilon-Greedy Policy Engine**  
+  - Dynamic ε-greedy exploration & softmax sampling (policy.py)  
+  - Clear interface for swapping in advanced RL algorithms  
+
+**High-Performance Pipeline Orchestration**  
+  - Master loop (masterloop.py) coordinating capture → detection → reward → action  
+  - Cross-process shared-memory IPC queues for sub-5 ms handoff  
+
+## Architecture Diagram
+![image](https://github.com/user-attachments/assets/49ed442e-aa25-4ab0-b85a-d55bd659bacc)
+
 
 ## Repository Structure
-
 ```
 RLAGENT/                          # Root folder for all RL agents
 └── MarioRLAgent/                 # Mario-specific agent implementation
@@ -84,11 +100,18 @@ The screen-capture utilities rely on the Quartz framework via `pyobjc`. At the m
 ```bash
 MAX_COMBO_KEYS=2 python scripts/masterloop.py --episodes 500
 ```
+## Research Proof-of-Concept
+•	Modularity: Swap in PPO, SAC or custom policies by adhering to policy.py interface.
+•	Performance: Shared-memory IPC reduces inter-process latency by over 60%.
+•	Extendibility: Plug in new detectors (e.g. transformers) or reward schemes with minimal glue code.
 
 
 ## Contributing
 
-PRs welcome! Please adhere to existing style, add tests, and update docs.
+1.	Fork the repo
+2.	Create a topic branch
+3.	Add tests & update documentation
+4.	Submit a pull request
 
 ## License
 

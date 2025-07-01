@@ -15,8 +15,6 @@ YOLO_ROOT = os.path.join(THIS_DIR, "yolov5")
 if YOLO_ROOT not in sys.path:
     sys.path.insert(0, YOLO_ROOT)
 
-# Now all your existing imports in agent.py and state_extractor.py will work, 
-# without changing a single one of them.
 from agent import run_agent
 
 # Argument parser setup

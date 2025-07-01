@@ -1,5 +1,6 @@
 import time
 import os
+import logging
 import agent_utils.policy as policy
 from agent_utils.actions import perform_action
 from agent_utils.reward_memory import update_reward_table, save_rewards, load_rewards
@@ -29,7 +30,7 @@ def run_agent(episodes=500, delay=0.0, window_title="Nestopia"):
         # Ensure Nestopia is focused once at the start of training
         bring_nestopia_to_front()
     except Exception as e:
-        print(f"[ERROR] Window capture failed: {e}")
+        logging.error("Window capture failed: %s", e)
         return
 
     hud_monitor = HUDMonitor()
@@ -69,7 +70,7 @@ def run_agent(episodes=500, delay=0.0, window_title="Nestopia"):
         # compute frame-to-frame player displacement
         dx = next_state.get("player_x", 0) - prev_state.get("player_x", 0)
         dy = next_state.get("player_y", 0) - prev_state.get("player_y", 0)
-        print(f"[DEBUG] Movement dx={dx}, dy={dy}")
+        logging.debug("Movement dx=%s, dy=%s", dx, dy)
         hud_after = hud_monitor.extract_hud_info()
 
         # Update HUD analyser history
@@ -81,7 +82,7 @@ def run_agent(episodes=500, delay=0.0, window_title="Nestopia"):
             failure_counts[action_key] = failure_counts.get(action_key, 0) + 1
             if failure_counts[action_key] >= BLACKLIST_THRESHOLD:
                 blacklisted_actions.add(action_key)
-                print(f"[INFO] Blacklisting action {action_key} after {failure_counts[action_key]} zero-motion tries")
+                logging.info("Blacklisting action %s after %d zero-motion tries", action_key, failure_counts[action_key])
         else:
             failure_counts[action_key] = 0
 
@@ -89,7 +90,7 @@ def run_agent(episodes=500, delay=0.0, window_title="Nestopia"):
         update_reward_table('+'.join(action), reward)
         policy.decay_epsilon()
 
-        print(f"[EP {ep:03}] Action: {'+'.join(action)} | Reward: {reward:+.2f} | Epsilon: {policy.epsilon:.2f}")
+        logging.info("[EP %03d] Action: %s | Reward: %+0.2f | Epsilon: %.2f", ep, '+'.join(action), reward, policy.epsilon)
 
         if ep % 25 == 0:
             save_rewards()
@@ -99,7 +100,7 @@ def run_agent(episodes=500, delay=0.0, window_title="Nestopia"):
     save_rewards()
     # After training, display top 10 learned actions
     sorted_actions = sorted(reward_table.items(), key=lambda kv: kv[1], reverse=True)
-    print("\n[RESULT] Top 10 actions by average reward:")
+    logging.info("\n[RESULT] Top 10 actions by average reward:")
     for action_key, value in sorted_actions[:10]:
-        print(f"  {action_key}: {value:.2f}")
-    print("[INFO] Training completed.")
+        logging.info("  %s: %.2f", action_key, value)
+    logging.info("Training completed.")

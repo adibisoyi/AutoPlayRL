@@ -3,6 +3,7 @@ import sys
 import os
 import time
 import argparse
+import logging
 
 # 1) Make this scripts/ folder itself a top‐level module
 THIS_DIR = os.path.dirname(__file__)
@@ -24,6 +25,8 @@ parser.add_argument("--episodes", type=int, default=500, help="Number of trainin
 parser.add_argument("--delay",    type=float, default=0.0, help="Delay between actions (seconds)")
 parser.add_argument("--window-title", type=str, default="Nestopia", help="Game window title")
 args = parser.parse_args()
+
+logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(message)s")
 
 if __name__ == "__main__":
     #input("[ACTION REQUIRED] Make sure the Nestopia window is visible, then press Enter to start...\n")

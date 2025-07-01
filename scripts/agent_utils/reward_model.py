@@ -2,6 +2,7 @@
 
 import numpy as np
 import os
+import logging
 
 # Optionally squash reward using tanh, controlled by environment variable
 USE_REWARD_TANH = os.getenv("USE_REWARD_TANH", "0") == "1"
@@ -40,7 +41,7 @@ TIME_PENALTY = 0.01             # small penalty to encourage efficient play
 def calculate_reward(prev_state, next_state, hud_before, hud_after, hud_analyser, screen_shape, dx, dy):
     reward = 0.0
     # movement debug
-    print(f"[DEBUG] Movement dx={dx}, dy={dy}")
+    logging.debug("Movement dx=%s, dy=%s", dx, dy)
 
     # 1) Horizontal progress (normalized)
     p0 = prev_state.get("player_pos")
@@ -78,9 +79,15 @@ def calculate_reward(prev_state, next_state, hud_before, hud_after, hud_analyser
     # weighted HUD: also compress via tanh
     weighted_scaled = np.tanh(weighted_hud_delta)
     reward += raw_scaled + weighted_scaled
-    print(f"[REWARD DEBUG] raw={raw_hud_delta:+.2f} -> scaled={raw_scaled:+.2f}, "
-          f"weighted={weighted_hud_delta:+.2f} -> scaled={weighted_scaled:+.2f}, "
-          f"combined={raw_scaled + weighted_scaled:+.2f}, total_reward={reward:+.2f}")
+    logging.debug(
+        "[REWARD DEBUG] raw=%+.2f -> scaled=%+.2f, weighted=%+.2f -> scaled=%+.2f, combined=%+.2f, total_reward=%+.2f",
+        raw_hud_delta,
+        raw_scaled,
+        weighted_hud_delta,
+        weighted_scaled,
+        raw_scaled + weighted_scaled,
+        reward,
+    )
 
     # 3) Enemy handling: reward defeating or avoiding enemies
     # 3a) Reward for defeating enemies (reducing enemy count)

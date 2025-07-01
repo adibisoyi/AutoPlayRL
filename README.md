@@ -64,7 +64,7 @@ A modular, end-to-end proof-of-concept for autonomous game playing agents. Exten
 git clone https://github.com/adibisoyi/AutoPlayRL.git
 ```
 2. **Environment**:
-   - **Conda**:
+- **Conda**:
 ```bash
 conda env create -f environment.yml
 conda activate rlagent

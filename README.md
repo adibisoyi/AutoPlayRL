@@ -4,7 +4,7 @@
 
 A modular, end-to-end proof-of-concept for autonomous game playing agents. Extendable to any title—currently demoed on Super Mario Bros.
 
-## 🎯 Core Components
+## Core Components
 
 **Real-Time State Extraction**  
   - YOLOv5-based object detection (scripts/agent_utils/state_extractor.py)  
@@ -101,9 +101,9 @@ The screen-capture utilities rely on the Quartz framework via `pyobjc`. At the m
 MAX_COMBO_KEYS=2 python scripts/masterloop.py --episodes 500
 ```
 ## Research Proof-of-Concept
-•	Modularity: Swap in PPO, SAC or custom policies by adhering to policy.py interface.
-•	Performance: Shared-memory IPC reduces inter-process latency by over 60%.
-•	Extendibility: Plug in new detectors (e.g. transformers) or reward schemes with minimal glue code.
+  - Modularity: Swap in PPO, SAC or custom policies by adhering to policy.py interface.
+  -	Performance: Shared-memory IPC reduces inter-process latency by over 60%.
+  -	Extendibility: Plug in new detectors (e.g. transformers) or reward schemes with minimal glue code.
 
 
 ## Contributing

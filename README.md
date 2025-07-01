@@ -50,13 +50,13 @@ RLAGENT/                          # Root folder for all RL agents
 ```bash
 git clone https://github.com/adibisoyi/AutoPlayRL.git
 cd RLAGENT/MarioRLAgent
-````
+```
 2. **Environment**:
    - **Conda**:
 ```bash
 conda env create -f environment.yml
 conda activate rlagent
-````
+```
 
  - **Virtualenv + pip**:
 
@@ -64,13 +64,13 @@ conda activate rlagent
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-````
+```
 
 ## Usage
 - **Training**:
 ```bash
 MAX_COMBO_KEYS=2 python scripts/masterloop.py --episodes 500
-````
+```
 
 
 ## Contributing

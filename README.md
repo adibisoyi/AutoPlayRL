@@ -84,8 +84,8 @@ This repository does not include the YOLOv5 code or the trained `best.pt` weight
 Grab the YOLOv5 repository and the `best.pt` weights from [Google Drive](https://drive.google.com/drive/folders/1DHswa77ZItY7tJHxB_ejbhvlIkoMAFrm?usp=drive_link).
 
 After downloading:
-1. Copy the `yolov5` folder into `scripts/yolov5/`.
-2. Place `best.pt` in `models/` so the file `models/best.pt` exists.
+- Copy the `yolov5` folder into `scripts/yolov5/`.
+- Place `best.pt` in `models/` so the file `models/best.pt` exists.
 
 ## Platform Requirements
 
@@ -113,10 +113,10 @@ MAX_COMBO_KEYS=2 python scripts/masterloop.py --episodes 500
 
 ## Contributing
 
-1.	Fork the repo
-2.	Create a topic branch
-3.	Add tests & update documentation
-4.	Submit a pull request
+-	Fork the repo
+-	Create a topic branch
+-	Add tests & update documentation
+-	Submit a pull request
 
 ## License
 

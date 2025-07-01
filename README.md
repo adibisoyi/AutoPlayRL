@@ -68,8 +68,9 @@ pip install -r requirements.txt
 3. **Download YOLOv5 and pretrained weights**:
 Grab the YOLOv5 repository and the `best.pt` weights from [Google Drive]((https://drive.google.com/drive/folders/1DHswa77ZItY7tJHxB_ejbhvlIkoMAFrm?usp=drive_link)).
 
-Place the `yolov5/` folder inside `scripts/` so that `scripts/yolov5` contains the code.
-Create a `models/` directory at the repository root and move `best.pt` into it as `models/best.pt`.
+After downloading:
+1. Copy the `yolov5` folder into `scripts/yolov5/`.
+2. Place `best.pt` in `models/` so the file `models/best.pt` exists.
 
 ## Usage
 - **Training**:

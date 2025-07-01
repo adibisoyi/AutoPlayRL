@@ -28,16 +28,13 @@ A modular, end-to-end proof-of-concept for autonomous game playing agents. Exten
 
 ## Repository Structure
 ```
-RLAGENT/                          # Root folder for all RL agents
-└── MarioRLAgent/                 # Mario-specific agent implementation
+    AutoPlayRL/                 # Mario-specific agent implementation
     ├── data/                     # Serialized memory, training data, etc.
     │   └── memory.pkl            # Replay/memory buffer file
     ├── models/                   # Saved model checkpoints
     │   ├── best.pt               # YOLOv5 detection weights
     ├── scripts/                  # Core scripts and utilities
-    │   ├── __pycache__/          # Compiled Python files
     │   ├── agent_utils/          # Helper modules
-    │   │   ├── __pycache__/
     │   │   ├── templates/        # Template configs or files
     │   │   ├── actions.py        # Keypress/action definitions
     │   │   ├── hud_analyser.py   # OCR- and strip-based HUD parsing

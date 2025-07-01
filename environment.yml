@@ -6,4 +6,3 @@ dependencies:
   - pip
   - python=3.9
   - tk
-prefix: /Users/adi/miniconda3/envs/game_agent_env

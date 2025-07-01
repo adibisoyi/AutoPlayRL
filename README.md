@@ -65,7 +65,6 @@ RLAGENT/                          # Root folder for all RL agents
 
 ```bash
 git clone https://github.com/adibisoyi/AutoPlayRL.git
-cd RLAGENT/MarioRLAgent
 ```
 2. **Environment**:
    - **Conda**:

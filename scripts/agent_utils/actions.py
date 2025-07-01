@@ -1,3 +1,4 @@
+import logging
 import random
 import time
 import subprocess
@@ -59,7 +60,7 @@ def bring_nestopia_to_front():
         subprocess.run(["osascript", "-e", 'tell application "Nestopia" to activate'])
         time.sleep(0.05)
     except Exception as e:
-        print(f"[ERROR] Could not focus Nestopia: {e}")
+        logging.error("Could not focus Nestopia: %s", e)
 
 def random_key_combination(max_keys=2):
     # choose from dynamic universe if available
@@ -93,5 +94,5 @@ def perform_action(keys, duration=0.1, verbose=True):
     # sync: brief pause to allow frame/log processing
     time.sleep(0.1)
     if verbose:
-        print(f"[ACTION] {'+'.join(keys)} for {duration:.2f}s")
+        logging.info("[ACTION] %s for %.2fs", '+'.join(keys), duration)
     return keys

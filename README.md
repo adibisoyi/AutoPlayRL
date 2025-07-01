@@ -93,7 +93,14 @@ After downloading:
 
 ## Platform Requirements
 
-The screen-capture utilities rely on the Quartz framework via `pyobjc`. At the moment the project is intended for **macOS**. Running on other platforms would require replacing the screen-capture and keyboard-control functions. All required Python packages are listed in `requirements.txt` or `environment.yml`.
+This project currently targets **macOS**. Several utilities depend on Apple's Quartz framework through the `pyobjc` bindings:
+
+- `scripts/agent_utils/screen_capture.py` locates the emulator window and grabs frames using Quartz APIs.
+- `scripts/hud_monitor.py` captures HUD strips via Quartz-powered screenshots.
+
+These pieces will not function on Windows or Linux without replacement. Keyboard input is handled with `pynput` and is cross‑platform, but the capture logic would need an alternative such as `mss` or `pyautogui` for other operating systems. Contributions adding non‑macOS backends are welcome.
+
+All required Python packages are listed in `requirements.txt` or `environment.yml`.
 
 ## Usage
 - **Training**:

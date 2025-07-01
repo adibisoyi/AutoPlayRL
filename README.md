@@ -66,11 +66,18 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 3. **Download YOLOv5 and pretrained weights**:
+
+This repository does not include the YOLOv5 code or the trained `best.pt` weights because of their size.  
+
 Grab the YOLOv5 repository and the `best.pt` weights from [Google Drive](https://drive.google.com/drive/folders/1DHswa77ZItY7tJHxB_ejbhvlIkoMAFrm?usp=drive_link).
 
 After downloading:
 1. Copy the `yolov5` folder into `scripts/yolov5/`.
 2. Place `best.pt` in `models/` so the file `models/best.pt` exists.
+
+## Platform Requirements
+
+The screen-capture utilities rely on the Quartz framework via `pyobjc`. At the moment the project is intended for **macOS**. Running on other platforms would require replacing the screen-capture and keyboard-control functions. All required Python packages are listed in `requirements.txt` or `environment.yml`.
 
 ## Usage
 - **Training**:
